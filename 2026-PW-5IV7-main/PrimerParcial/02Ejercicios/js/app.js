@@ -69,6 +69,56 @@ formArreglos.addEventListener('submit', (evento) =>{
     resultadoArreglos.textContent = resultado;
 });
     
-        
+      pintarTabla();
+
+
+
+
+const formObjeto = document.getElementById('form-objeto');
+const resultadoObjeto = document.getElementById('resultado-objeto');
+
+formObjeto.addEventListener('submit', (evento) => {
+    evento.preventDefault();
+    const taller = {
+        nombre : document.getElementById('objeto-nombre').value,
+        instructor : document.getElementById('objeto-instructor').value,
+        cupo : Number(document.getElementById('objeto-cupo')).value,
+        inscritos: Number(document.getElementById('objeto-inscritos').value)
+
+    };
+    const operacion = document.getElementById('operacion-objeto').value;
+
+    let resultado
+    switch(operacion){
+        case 'keys':
+            resultado = JSON.stringify(Object.keys(taller));
+            break;
+
+        case 'values':
+            resultado = JSON.stringify(Object.values(taller));
+            break;
+
+        case 'entries':
+            resultado = Object.entries(taller).map(([campo, valor]) => `${campo}: ${valor}`).join('\n');
+            break;
+
+        case 'stringify':
+            resultado = JSON.stringify(taller, null, 2);
+            break;
+            
+        case 'roundtrip':
+            const textoJson = JSON.stringify(taller, null, 2);
+            const objetoDeVuelta = JSON.parse(textoJson);
+
+            resultado = [
+                '',
+                textoJson,
+                '',
+                `tipo: ${typeof objetoDeVuelta}`,
+                objetoDeVuelta.nombre
+                ].join('\n')
+            break;
+    }
+})  
 
     resultadoArreglos.textContent = resultado;
