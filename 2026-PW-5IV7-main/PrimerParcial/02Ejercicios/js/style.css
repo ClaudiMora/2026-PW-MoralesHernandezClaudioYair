@@ -1,0 +1,166 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #1f2937;
+    background-color: #f9fafb;
+    text-align: center;
+}
+
+header{
+    background-color: #286ac7;
+    color: #ffffff;
+    padding: 1rem;
+    text-align: center;
+}
+
+header a{
+    color: #ffffff;
+}
+
+main{
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1.5rem;
+
+}
+
+footer{
+    text-align: center;
+    padding: 1rem;
+    color: #575758;
+    font-size: 0.875rem;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.titulocontent h1 {
+    font-size: 2rem;
+    margin: 0 0 0.5rem 0;
+}
+
+.titulocontent p {
+    color: #4b5563;
+    margin: 0 0 1.5rem 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: left;
+    padding: 0.6rem;
+    border-bottom: 1px solid #d1d5db;
+}
+
+th {
+    background-color: #1f2937;
+    color: #ffffff;
+}
+
+td a {
+    color: #2563eb;
+}
+
+.catalogo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.tarjeta {
+    background-color: #ffff;
+    border: 1px solid;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.tarjeta h2 {
+    margin-top: 0;
+    font-size: 1.1rem;
+}
+
+.tarjeta a:hover {
+    text-decoration: underline;
+}
+
+.formulario-registro {
+    background-color: #ffffff;
+    max-width: 480px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.formulario-registro h1 {
+    margin: 0 0 1rem 0;
+    font-size: 1.6rem;
+}
+
+.formulario-registro label {
+    font-weight: bold;
+    margin-top: 0.75rem;
+}
+
+.formulario-registro input {
+    padding: 0.6rem;
+    border: 1px solid #cdd3db;
+    border-radius: 0.375rem;
+    font-size: 1rem;
+    width: 100%;
+    
+}
+
+.formulario-registro button {
+    background-color: #1660c7;
+    color: #ffffff;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    align-self: flex-start;
+}
+
+.formulario-registro button:hover {
+    background-color: #065aa0;
+}
+
+.formulario-registro input.invalido {
+    border-color: #a80b0b;
+    background-color: #fef2f2;
+}
+
+.formulario-registro .error {
+    color: #a80b0b;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.formulario-registro .mensaje-exito.activo {
+    color: #14b951;
+    font-weight: bold;
+    margin-top: 0.25rem;
+}
+
+/* Catalogo de Talleres */
+
+.catalogo{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
