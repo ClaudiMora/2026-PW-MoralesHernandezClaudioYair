@@ -9,8 +9,25 @@ const talleres = [
 
 
 function pintarTabla(){
-    //debe de obtener la tabla y rellenarla con los datos de talleres
+    const tabla = document.getElementById('tabla-talleres');
+    const tbody = tabla.querySelector('tbody');
+
+    tbody.innerHTML = '';
+
+    talleres.forEach((taller) => {
+        const fila = document.createElement('tr');
+
+        fila.innerHTML = `
+            <td>${taller.nombre}</td>
+            <td>${taller.instructor}</td>
+            <td>${taller.cupo}</td>
+            <td>${taller.inscritos}</td>
+        `;
+
+        tbody.appendChild(fila);
+    });
 }
+    //debe de obtener la tabla y rellenarla con los datos de talleres
 
 const formArreglos = document.getElementById('form-arreglos');
 const resultadoArreglos = document.getElementById('resultado-arreglo');
@@ -42,7 +59,7 @@ formArreglos.addEventListener('submit', (evento) =>{
             break;
         }
 
-        case 'filterMap': {
+        case 'filtermap1': {
             const conCupo = talleres.filter((t) => t.inscritos < t.cupo).map((t) => t.nombre);
             resultado = conCupo.join('\n') || "No hay talleres con cupo disponible";
             break;
@@ -82,7 +99,7 @@ formObjeto.addEventListener('submit', (evento) => {
     const taller = {
         nombre : document.getElementById('objeto-nombre').value,
         instructor : document.getElementById('objeto-instructor').value,
-        cupo : Number(document.getElementById('objeto-cupo')).value,
+        cupo: Number(document.getElementById('objeto-cupo').value),
         inscritos: Number(document.getElementById('objeto-inscritos').value)
 
     };
@@ -111,14 +128,18 @@ formObjeto.addEventListener('submit', (evento) => {
             const objetoDeVuelta = JSON.parse(textoJson);
 
             resultado = [
-                '',
                 textoJson,
                 '',
                 `tipo: ${typeof objetoDeVuelta}`,
                 objetoDeVuelta.nombre
-                ].join('\n')
+            ].join('\n');
             break;
-    }
-})  
 
-    resultadoArreglos.textContent = resultado;
+        default:
+            resultado = 'Operación no válida';
+    }
+
+    resultadoObjeto.textContent = resultado;
+});
+
+    
