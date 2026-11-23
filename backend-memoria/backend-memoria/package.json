@@ -1,0 +1,12 @@
+{
+  "name": "backend-memoria",
+  "version": "1.0.0",
+  "description": "Backend de talleres con los datos en memoria (semana 9, Programación Web)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
