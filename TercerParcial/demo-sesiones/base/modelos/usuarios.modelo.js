@@ -6,16 +6,19 @@ function crearModeloUsuarios(pool) {
   async function verificar(usuario, contrasena) {
     if (!usuario || !contrasena) return null;
 
+    // Consulta parametrizada (?): el texto del usuario nunca se pega directo en el SQL.
     const [filas] = await pool.query(
       'SELECT id, usuario, nombre, rol, contrasena_hash FROM usuarios WHERE usuario = ?',
       [usuario]
     );
-    if (filas.length === 0) return null; // mismo resultado que contraseña mala: no revelo si existe
+    // Mismo resultado si el usuario no existe o si la contraseña está mal: así no revelo quién existe.
+    if (filas.length === 0) return null;
 
     const fila = filas[0];
     const coincide = await bcrypt.compare(contrasena, fila.contrasena_hash);
     if (!coincide) return null;
 
+    // Regreso al usuario SIN el hash.
     return { id: fila.id, usuario: fila.usuario, nombre: fila.nombre, rol: fila.rol };
   }
 
